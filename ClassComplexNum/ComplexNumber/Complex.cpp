@@ -4,26 +4,15 @@
 
 using namespace std;
 
-void complex_out(ComplexNumber a){
-	if (a.real != 0 and a.imag != 0)
-		cout << "z = " << a.real << " + " << a.imag <<"i\n" << endl;
-	if (a.imag == 0)
-		cout << "z = " << a.real << "\n" << endl;
-	if (a.real == 0 and a.imag != 0)
-		cout << "z = " << a.imag << "i\n" << endl;
-}
 
 int main(){
 	ComplexNumber a(5,9),b(4,3),c;
 
-	cout <<"Value of a:\n";
-	complex_out(a);
+	cout <<"Value of a:" + (a).ToString() <<endl;
 
-	cout <<"Value of b:\n";
-	complex_out(b);
+	cout <<"Value of b:" + (b).ToString() <<endl;;
 
-	cout <<"Value of c:\n";
-	complex_out(c);
+	cout <<"Value of c:" + (c).ToString() <<endl;;
 
 	c = b;
 	cout <<"c = b:\n";
