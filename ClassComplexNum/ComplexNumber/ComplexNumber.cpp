@@ -4,21 +4,22 @@
 #include <sstream>
 #include "ComplexNumber.h"
 
+/// конструктор без указания нач. значений ( поля в таком случае равны 0)
 ComplexNumber::ComplexNumber(){
 	real = 0;
 	imag = 0;
 }
-
+/// конструктор с указанием начальных значений r и i
 ComplexNumber::ComplexNumber(double r, double i){
 	real = r;
 	imag = i;
 }
 
-
+///присваивает значение r действ. части числа
 void ComplexNumber::set_real(double r){
 	real = r;
 }
-
+///присваивает значение  i мнимой. части числа
 void ComplexNumber::set_imag(double i){
 	imag = i;
 }
@@ -45,7 +46,7 @@ ComplexNumber ComplexNumber::operator - (ComplexNumber sub) const{
 ///деление комплексного числа на комплексное число divi
 ComplexNumber ComplexNumber::operator / (ComplexNumber divi) const{
 	ComplexNumber divide; //результат деления двух комплексных чисел
-	if (divi.real == 0 and divi.imag == 0){
+	if (divi.real == 0 and divi.imag == 0){   //если делитель равен 0, то функция кидает исключение
 		throw std::invalid_argument("Invalid argument - zero divisor");
 	}
 	else{
