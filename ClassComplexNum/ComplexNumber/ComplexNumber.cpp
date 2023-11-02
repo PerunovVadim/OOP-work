@@ -87,11 +87,11 @@ double ComplexNumber::argum()  const{
 		return -90;
 	return 0;
 }
-
+///вывод комплексного числа в строку
 std::string ComplexNumber::ToString() const{
 	std::stringstream ss;
 
-	if (real != 0 and imag != 0){
+	if (real != 0 and imag != 0){ 
 		ss << "z = " << real << '+' << imag << "i\n";
 		return ss.str();
 	}

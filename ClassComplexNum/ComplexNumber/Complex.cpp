@@ -15,8 +15,7 @@ int main(){
 	cout <<"Value of c:" + (c).ToString() <<endl;;
 
 	c = b;
-	cout <<"c = b:\n";
-	complex_out(c);
+	cout <<"c = b:\n" << c.ToString();
 
 	cout <<"a + b equal:" + (a+b).ToString() <<endl;
 
@@ -31,7 +30,7 @@ int main(){
 	try{
 			cout << (a / b).ToString() <<endl;
 		}
-		catch (const runtime_error err){
+		catch (const invalid_argument err){
 			cout << err.what();
 			return 1;
 	}
