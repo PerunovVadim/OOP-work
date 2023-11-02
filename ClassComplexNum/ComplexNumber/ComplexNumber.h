@@ -1,7 +1,8 @@
 #ifndef ComplexNumber_h
 #define ComplexNumber_h
+#include <numbers>
+using std::numbers::pi;
 
-const double pi = 3.14159265;
 class ComplexNumber{
 	public:
 		double real; //действительная часть комплексного числа
@@ -20,30 +21,40 @@ class ComplexNumber{
 		void set_imag(double i);
 
 		///присваивание комплексному числу значение комплекс. числа ComNum
-		void operator = (ComplexNumber ComNum);
+		void operator = (const ComplexNumber &ComNum);
 
 		///сложение комплексного числа с комплекс. числом add
-		ComplexNumber operator + (ComplexNumber add) const;
+		ComplexNumber operator + (const ComplexNumber& add) const;//const после списка параметров определяет метод как константный, 
+																  //т.е не изменяющий полей класса
 
 		///вычитание из комплексного числа комплексного числа sub
-		ComplexNumber operator - (ComplexNumber sub) const;
+		ComplexNumber operator - (const ComplexNumber& sub) const;//const после списка параметров определяет метод как константный, 
+																  //т.е не изменяющий полей класса
 
 		///деление комплексного числа на комплексное число divi
-		ComplexNumber operator / (ComplexNumber divi) const;
+		ComplexNumber operator / (const ComplexNumber& divi) const;//const после списка параметров определяет метод как константный, 
+																  //т.е не изменяющий полей класса
 
 		///умножение комплексного числа на комплексное число mul
-		ComplexNumber operator * (ComplexNumber mul) const;
+		ComplexNumber operator * (const ComplexNumber& mul) const;//const после списка параметров определяет метод как константный, 
+																  //т.е не изменяющий полей класса
 
 		///умножение комплексного числа на действ. число mul
-		ComplexNumber operator * (double mul) const;
+		ComplexNumber operator * (double mul) const;//const после списка параметров определяет метод как константный, 
+													//т.е не изменяющий полей класса
 
 		///нахождение модуля комплексного числа
-		double modul() const;
+		double modul() const;//const после списка параметров определяет метод как константный, 
+							 //т.е не изменяющий полей класса
 
 		///нахождение аргумента комплексного числа
-		double argum() const;
+		double argum() const;//const после списка параметров определяет метод как константный, 
+							 //т.е не изменяющий полей класса
+
 
 		///выводит комплексное число в строку
-		std::string ToString() const;
+		std::string ToString() const;//const после списка параметров определяет метод как константный, 
+							 		 //т.е не изменяющий полей класса
+
 };
 #endif

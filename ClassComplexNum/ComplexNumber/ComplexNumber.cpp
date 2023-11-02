@@ -24,39 +24,39 @@ void ComplexNumber::set_imag(double i){
 	imag = i;
 }
 ///присваивание комплексному числу значение комплекс. числа ComNum
-void ComplexNumber::operator = (ComplexNumber ComNum){
+void ComplexNumber::operator = (const ComplexNumber &ComNum){
 	real = ComNum.real;
 	imag = ComNum.imag;
 }
 
 ///сложение комплексного числа с комплекс. числом add
-ComplexNumber ComplexNumber::operator + (ComplexNumber add) const{
+ComplexNumber ComplexNumber::operator + (const ComplexNumber& add) const{
 	ComplexNumber summ; //сумма двух комплексных чисел
 	summ.real = real + add.real;
 	summ.imag = imag + add.imag;
 	return summ;
 }
 ///вычитание из комплексного числа комплексного числа sub
-ComplexNumber ComplexNumber::operator - (ComplexNumber sub) const{
+ComplexNumber ComplexNumber::operator - (const ComplexNumber& sub) const{
 	ComplexNumber diff; //разность двух комплексных чисел
 	diff.real = real - sub.real;
 	diff.imag = imag - sub.imag;
 	return diff;
 }
 ///деление комплексного числа на комплексное число divi
-ComplexNumber ComplexNumber::operator / (ComplexNumber divi) const{
+ComplexNumber ComplexNumber::operator / (const ComplexNumber& divi) const{
 	ComplexNumber divide; //результат деления двух комплексных чисел
 	if (divi.real == 0 and divi.imag == 0){   //если делитель равен 0, то функция кидает исключение
 		throw std::invalid_argument("Invalid argument - zero divisor");
 	}
 	else{
 		divide.real = (real * divi.real + divi.imag * imag) /(divi.real*divi.real + divi.imag*divi.imag);
-		divide.imag = (imag * divi.real + divi.imag * real) /(divi.real*divi.real + divi.imag*divi.imag);
+		divide.imag = (imag * divi.real - divi.imag * real) /(divi.real*divi.real + divi.imag*divi.imag);
 		return divide;
 	}
 }
 ///умножение комплексного числа на комплексное число mul
-ComplexNumber ComplexNumber::operator * (ComplexNumber mul) const{
+ComplexNumber ComplexNumber::operator * (const ComplexNumber& mul) const{
 	ComplexNumber mult;//результат произведения двух комплексных чисел
 	mult.real = real * mul.real - mul.imag * imag;
 	mult.imag = (imag * mul.real + mul.imag * real);
