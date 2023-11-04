@@ -59,7 +59,7 @@ ComplexNumber ComplexNumber::operator / (const ComplexNumber& divi) const{
 ComplexNumber ComplexNumber::operator * (const ComplexNumber& mul) const{
 	ComplexNumber mult;//результат произведения двух комплексных чисел
 	mult.real = real * mul.real - mul.imag * imag;
-	mult.imag = (imag * mul.real + mul.imag * real);
+	mult.imag = imag * mul.real + mul.imag * real;
 	return mult;
 }
 ///умножение комплексного числа на действ. число mul
@@ -103,4 +103,5 @@ std::string ComplexNumber::ToString() const{
 		ss << "z = " << imag << "i\n";
 		return ss.str();
 	}
+	return "";
 }
