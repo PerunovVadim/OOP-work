@@ -1,4 +1,4 @@
-//����� - ������� �����
+//Àâòîð - Ïåðóíîâ ÂÀäèì
 #include <iostream>
 #include <Windows.h>
 #include <cstdlib>
@@ -11,7 +11,7 @@ int main() {
 	Storage st1(500, 1250);
 	Manifacture mn1(500, 1, Specialization::Sawmill), mn2(500, 2, Specialization::Quarry), mn3(500, 3, Specialization::Goldmine), mn4(500, 4, Specialization::Ironmine), mn5(500, 5, Specialization::Farm);
 	Defense def(500, 7);
-	//����������� ������� �������� ����������� �������
+	//ñòàòè÷åñêèå ìàññèâû îáüåêòîâ ïðîèçâîäíûõ êëàññîâ
 	Storage stor[5];
 	Manifacture prod[5];
 
@@ -45,12 +45,12 @@ int main() {
 		if (GetAsyncKeyState('6')) st1.Upgrade(400);
 		if (GetAsyncKeyState('7')) def.Upgrade(3);
 
-		cout << "������������� ���������: " << st1.CurrentRes() << '/' << st1.GetCapacity() << endl;
-		cout << "������: " << st1.Wood  << endl;
-		cout << "������: " << st1.Stone << endl;
-		cout << "������: " << st1.Gold  << endl;
-		cout << "������: " << st1.Iron  << endl;
-		cout << "���: "	   << st1.Food  << endl;
+		cout << "Çàïîëíåííîñòü õðàíèëèùà: " << st1.CurrentRes() << '/' << st1.GetCapacity() << endl;
+		cout << "Äåðåâî: " << st1.Wood  << endl;
+		cout << "Êàìåíü: " << st1.Stone << endl;
+		cout << "Çîëîòî: " << st1.Gold  << endl;
+		cout << "Æåëåçî: " << st1.Iron  << endl;
+		cout << "Åäà: "	   << st1.Food  << endl;
 
 		cout << "\n\n";
 		def.Attack();
@@ -63,8 +63,9 @@ int main() {
 	}
 
 	cout << prod[0].ToString()<<'\n';
-
+	
+	// полиморфизм
 	Defense d(500, 5);
-	Building *b1  = &d;
-	cout << b1->ToString();
+	Building *b1  = &d; //если присвоить указателю на базовый класс адрес ячейки, в которой хранится обьект производного,
+	cout << b1->ToString();//то при разыменовании вызовутся методы производного класса
 }

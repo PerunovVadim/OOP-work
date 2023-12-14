@@ -2,6 +2,7 @@
 #include <string>
 #include <iostream>
 #include <sstream>
+#include <cassert>
 #include "Building.h"
 
 
@@ -17,11 +18,11 @@ Building::Building(unsigned HP) {
 	level = 1;
 }
 ///геттер для поля HP
-int Building::GetHP() {
+int Building::GetHP() const {
 	return HealthPoints;
 }
 ///геттер для поля level
-int Building::GetLevel() {
+int Building::GetLevel() const {
 	return level;
 }
 
@@ -34,7 +35,7 @@ Defense::Defense(unsigned int HP, unsigned int dmg) : Building(HP) {
 	Damage = dmg;
 }
 ///метод атаки
-void Defense::Attack() {
+void Defense::Attack() const {
 	std::cout << "Башня нанесла " << Damage << " урона \n";
 }
 
@@ -43,7 +44,7 @@ void Defense::SetDamage(unsigned int dmg){
 	Damage = dmg;
 }
 ///геттер для поля Damage
-unsigned int Defense::GetDamage() {
+unsigned int Defense::GetDamage() const {
 	return Damage;
 }
 ///определение метода улучшения здания для этого класса
@@ -80,7 +81,7 @@ void Storage::SetCapacity(unsigned int Cap) {
 	Capacity = Cap;
 }
 ///геттер для поля Capacity
-unsigned int Storage::GetCapacity() {
+unsigned int Storage::GetCapacity() const {
 	return Capacity;
 }
 ///определение метода улучшения здания для этого класса
@@ -89,7 +90,7 @@ void Storage::Upgrade(unsigned int Up) {
 	level++;
 }
 ///нахождение общего кол-ва ресурсов, хранящегося в данный момент
-unsigned Storage::CurrentRes() {
+unsigned Storage::CurrentRes() const {
 	return Wood + Food + Gold + Stone + Iron;
 }
 std::string Storage::ToString() {
@@ -109,7 +110,7 @@ Manifacture::Manifacture(unsigned int HP,unsigned int prod,Specialization sp) : 
 	spec = sp;
 }
 ///производство ресурса
-void Manifacture::Produce(Storage& stor) {
+void Manifacture::Produce(Storage& stor) const {
 	if ((stor.CurrentRes() + Production) <= stor.GetCapacity()) { //если прозведенное полностью вмещается в хранилище
 		switch (spec)
 		{
@@ -163,11 +164,11 @@ void Manifacture::SetProduction(unsigned int prod) {
 	Production = prod;
 }
 ///геттер для поля Production
-unsigned int Manifacture::GetProduction() {
+unsigned int Manifacture::GetProduction() const {
 	return Production;
 }
 ///геттер для поля spec
-Specialization Manifacture::GetSpec() {
+Specialization Manifacture::GetSpec() const {
 	return spec;
 }
 
@@ -193,4 +194,17 @@ std::string Manifacture::ToString() {
 		break;
 	}
 	return ss.str();
+}
+
+void testing() {
+	Manifacture a(500,3,Specialization::Sawmill),b(500,5,Specialization::Farm);
+	Storage st(500, 1000);
+	Defense def(300, 6);
+	a.Produce(st);
+	b.Produce(st);
+	assert(st.Wood == 3);
+	assert(st.Food == 5);
+	assert(st.CurrentRes() == 8);
+	def.Upgrade(3);
+	assert(def.GetDamage() == 9);
 }

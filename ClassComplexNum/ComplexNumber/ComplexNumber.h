@@ -57,4 +57,8 @@ class ComplexNumber{
 							 		 //т.е не изменяющий полей класса
 
 };
+
+void Complex_To_Text_File(ComplexNumber &a,const std::string &file_name);
+void Complex_From_Text_File(ComplexNumber &a, const std::string &file_name);
+
 #endif

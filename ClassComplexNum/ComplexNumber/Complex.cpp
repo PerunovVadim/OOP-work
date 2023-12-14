@@ -22,24 +22,24 @@ int main(){
 	ComplexNumber a(5,9),c;
 	ComplexNumber *b = new ComplexNumber(4,3); 
 
-	cout <<"Value of a:" + (a).ToString() <<endl;
+	cout <<"a = " + (a).ToString() <<endl;
 
-	cout <<"Value of b:" + (*b).ToString() <<endl;
+	cout <<"b = " + (*b).ToString() <<endl;
 
-	cout <<"Value of c:" + (c).ToString() <<endl;
+	cout <<"c = " + (c).ToString() <<endl;
 
 	c = *b;
-	cout <<"c = b:\n" << c.ToString();
+	cout <<"c = b: " << c.ToString();
 
-	cout <<"a + b equal:" + (a+(*b)).ToString() <<endl;
+	cout <<"a + b = " + (a+(*b)).ToString() <<endl;
 
-	cout <<"a - b equal:" + (a-(*b)).ToString() <<endl;
+	cout <<"a - b = " + (a-(*b)).ToString() <<endl;
 
-	cout <<"a * b equal:" + (a*(*b)).ToString() <<endl;
+	cout <<"a * b = " + (a*(*b)).ToString() <<endl;
 
-	cout <<"a * 5 equal:" + (a*5).ToString() <<endl;
+	cout <<"a * 5 = " + (a*5).ToString() <<endl;
 
-	cout <<"a / b equal:";
+	cout <<"a / b = ";
 
 	try{
 			cout << (a / (*b)).ToString() <<endl;
@@ -85,4 +85,9 @@ int main(){
 		delete complexP[i];
 
 	delete[] complexP;
+
+	ComplexNumber into(50,6),from;
+	Complex_To_Text_File(into,"file");
+	Complex_From_Text_File(from,"file");
+	cout <<"Complex Number loaded from file :"<< from.ToString();
 }

@@ -14,9 +14,9 @@ class Building
 		/// онструктор базового класса Building с нач. параметрами
 		Building(unsigned int HP);
 		///геттер дл€ пол€ HP
-		int GetHP();
+		int GetHP() const;
 		///геттер дл€ пол€ level
-		int GetLevel();
+		int GetLevel() const;
 		///абстрактный метод улучшени€ здани€
 		virtual void  Upgrade(unsigned int Up) = 0;
 		///ћетод вывод€щий в строку значени€ полей класса
@@ -33,11 +33,11 @@ class Defense : public Building {
 		/// онструктор производного класса Defense с нач. параметрами
 		Defense(unsigned int HP, unsigned int dmg);
 		///метод атаки
-		void Attack();
+		void Attack() const;
 		/// сеттер дл€ пол€ Damage
 		void SetDamage(unsigned int dmg);
 		///геттер дл€ пол€ Damage
-		unsigned int GetDamage();
+		unsigned int GetDamage() const;
 		///определение метода улучшени€ здани€ дл€ этого класса
 		void Upgrade(unsigned int Up) override;
 		//переопределение метода ToString базового класса
@@ -61,11 +61,11 @@ class Storage : public Building {
 		///сеттер дл€ пол€ Capacity
 		void SetCapacity(unsigned int Cap);
 		///геттер дл€ пол€ Capacity
-		unsigned int GetCapacity();
+		unsigned int GetCapacity() const;
 		///определение метода улучшени€ здани€ дл€ этого класса
 		void Upgrade(unsigned int Up) override;
 		///нахождение общего кол-ва ресурсов, хран€щегос€ в данный момент
-		unsigned CurrentRes();
+		unsigned CurrentRes() const;
 		//переопределение метода ToString базового класса
 		std::string ToString() override;
 };
@@ -82,17 +82,18 @@ class Manifacture : public Building {
 		/// онструктор производного класса Manifacture с нач. параметрами
 		Manifacture(unsigned int HP, unsigned int prod, Specialization sp);
 		///производство ресурса
-		void Produce(Storage &stor);
+		void Produce(Storage &stor) const;
 		///определение метода улучшени€ здани€ дл€ этого класса
 		void Upgrade(unsigned int Up = 5) override;
 		///сеттер дл€ пол€ Production
 		void SetProduction(unsigned int prod);
 		///геттер дл€ пол€ Production
-		unsigned int GetProduction();
+		unsigned int GetProduction() const;
 		///геттер дл€ пол€ spec
-		Specialization GetSpec();
+		Specialization GetSpec() const;
 		//переопределение метода ToString базового класса
 		std::string ToString() override;
 
 };
 
+void testing();

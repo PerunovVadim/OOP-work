@@ -2,6 +2,7 @@
 #include <stdexcept>
 #include <string>
 #include <sstream>
+#include <fstream>
 #include "ComplexNumber.h"
 
 /// конструктор без указания нач. значений ( поля в таком случае равны 0)
@@ -92,16 +93,36 @@ std::string ComplexNumber::ToString() const{
 	std::stringstream ss;
 
 	if (real != 0 and imag != 0){ 
-		ss << "z = " << real << '+' << imag << "i\n";
+		ss << real << '+' << imag << "i\n";
 		return ss.str();
 	}
 	if (imag == 0){
-		ss << "z = " << real << '\n';
+		ss << real << '\n';
 		return ss.str();
 	}
 	if (real == 0 and imag != 0){
-		ss << "z = " << imag << "i\n";
+		ss << imag << "i\n";
 		return ss.str();
 	}
 	return "";
+}
+
+void Complex_To_Text_File(ComplexNumber& a, const std::string &file_name){
+	std::ofstream out;//файл для записи
+	out.open(file_name);//открытие файла
+	if (out.is_open()){
+		out << a.real <<' '<< a.imag << std::endl;
+		out.close();
+	}
+	else throw std::runtime_error("Error of file opening");
+}
+
+void Complex_From_Text_File(ComplexNumber &a,const std::string &file_name){
+	std::ifstream f;//файл для чтения
+	f.open(file_name);//открытие файла
+		if (f.is_open()){
+			f >> a.real >> a.imag;
+			f.close();
+		}
+		else throw std::runtime_error("Error of file opening");
 }
